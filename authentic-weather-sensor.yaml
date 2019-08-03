@@ -1,0 +1,54 @@
+      authentic_weather:
+        friendly_name_template: >
+            {% if is_state('sensor.dark_sky_icon', 'clear-day') or is_state('sensor.dark_sky_icon', 'clear-night') %}
+              {{ [ "Fucking love is in the air.", "Take off your shirt and get wet.", "Time to put on my coolest shades.", "Sun fucking glasses.", "It's fucking alright today.", "Not amazeballs but also not fucking shitty.", "Fucking Amaze Balls.", "So fucking nice outside, holy schmoly."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+              {{ [ "It's fucking raining.", "Get your fucking umbrella.", "Shitloads of rain is awaiting you.", "It rains cats and dogs.", "Meh... Just stay in bed."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'snow') %}
+            {{ [ "Holy fucking snow.", "Are you freezing fucking serious?", "Can't see because fucking snow.", "It's fucking skiing time.", "Hello? yes, this is snow- man."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'sleet') %}
+              Sleet
+            {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+              {{ [ "Fucking thunder storm.", "It's getting fucking dark.", "It's fucking windy.", "The storm is coming - May the Force be with you.", "Hello? yes, this is snow- man."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+              It's fucking foggy.
+            {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+              {{ [ "It's fucking cloudy.", "It's just fucking grey.", "Fucking fifty shades of grey."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-day') or is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+              {{ [ "Totally not shitty.", "It’s like a meh… kinda day."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'hail') %}
+              mdi:weather-hail
+            {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+              Fucking thunder storm.
+            {% else %}
+              Fucking fuck
+            {% endif %}
+        value_template: > 
+          {{ states('sensor.dark_sky_apparent_temperature') | round() }}
+        unit_of_measurement: "°C"
+        icon_template: >
+          {% if is_state('sensor.dark_sky_icon', 'clear-day') %}
+            mdi:weather-sunny
+          {% elif is_state('sensor.dark_sky_icon', 'clear-night') %}
+            mdi:weather-night
+          {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+            mdi:weather-rainy
+          {% elif is_state('sensor.dark_sky_icon', 'snow') %}
+            mdi:weather-snowy
+          {% elif is_state('sensor.dark_sky_icon', 'sleet') %}
+            mdi:weather-snowy-rainy
+          {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+            mdi:weather-windy-variant
+          {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+            mdi:weather-fog
+          {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+            mdi:weather-cloudy
+          {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-day') or is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+            mdi:weather-partlycloudy
+          {% elif is_state('sensor.dark_sky_icon', 'hail') %}
+            mdi:weather-hail
+          {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+            mdi:weather-lightning
+          {% else %}
+            mdi:help-circle
+          {% endif %}

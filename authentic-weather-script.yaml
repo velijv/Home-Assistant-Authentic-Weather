@@ -1,0 +1,34 @@
+authentic_weather:
+    alias: Authentic Weather 
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.home
+          volume_level: "0.3"
+      - service: tts.google_say
+        entity_id: media_player.home  
+        data_template:
+          message: >
+            {% if is_state('sensor.dark_sky_icon', 'clear-day') or is_state('sensor.dark_sky_icon', 'clear-night') %}
+              {{ [ "Fucking love is in the air.", "Take off your shirt and get wet.", "Time to put on my coolest shades.", "Sun fucking glasses.", "It's fucking alright today.", "Not amazeballs but also not fucking shitty.", "Fucking Amaze Balls.", "So fucking nice outside, holy schmoly."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+              {{ [ "It's fucking raining.", "Get your fucking umbrella.", "Shitloads of rain is awaiting you.", "It rains cats and dogs.", "Meh... Just stay in bed."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'snow') %}
+            {{ [ "Holy fucking snow.", "Are you freezing fucking serious?", "Can't see because fucking snow.", "It's fucking skiing time.", "Hello? yes, this is snow- man."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'sleet') %}
+              Sleet
+            {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+              {{ [ "Fucking thunder storm.", "It's getting fucking dark.", "It's fucking windy.", "The storm is coming - May the Force be with you.", "Hello? yes, this is snow- man."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+              It's fucking foggy.
+            {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+              {{ [ "It's fucking cloudy.", "It's just fucking grey.", "Fucking fifty shades of grey."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-day') or is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+              {{ [ "Totally not shitty.", "It’s like a meh… kinda day."] | random }}
+            {% elif is_state('sensor.dark_sky_icon', 'hail') %}
+              mdi:weather-hail
+            {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+              Fucking thunder storm.
+            {% else %}
+              Fucking fuck
+            {% endif %}
