@@ -1,5 +1,5 @@
 # Home-Assistant-Authentic-Weather
-[Authentic Weather](http://authenticweather.com/) phrases to [Home Assistant](https://www.home-assistant.io/) as a sensor and a script for TTS to smart speakers. 
+[Authentic Weather](https://www.awwwards.com/authentic-weather-probably-the-most-honest-weather-app.html) phrases to [Home Assistant](https://www.home-assistant.io/) as a sensor and a script for TTS to smart speakers. 
 
 - **phrases.json** - the original wordings by Authentic Weather creators for reference\
 - **authentic-weather-sensor.yaml** - a sensor based on Dark Sky icon state\
