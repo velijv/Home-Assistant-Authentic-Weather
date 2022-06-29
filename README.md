@@ -17,7 +17,7 @@ Then you can make a routine to ask "What's the f*cking weather?" to run the scri
 > > # <a href="#"><img src="https://img.shields.io/badge/Assistant-responds-4285F4.svg?&logo=GoogleAssistant&logoColor=4285F4&labelColor=fff&theme=flat" height="24" alt="Assistant responds"></a>   _F*cking thunder storm_
 
 
-<details>
+<details open>
   <summary> 👇 `yaml` </summary>
 
 *** 
